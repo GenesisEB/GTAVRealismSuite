@@ -9,7 +9,7 @@ namespace RealismTest
     {
         internal static void ProcessKnockouts(Ped PlayerPed)
         {
-            if (PlayerPed.CanRagdoll)
+            if (PlayerPed.CanRagdoll && !PlayerPed.IsGettingIntoVehicle)
             {
                 Game.Console.Print("You just got knocked the fuck out man!");
                 if (PlayerPed.Health - 100 < 65)
