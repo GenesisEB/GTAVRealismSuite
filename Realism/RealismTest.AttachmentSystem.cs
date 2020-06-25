@@ -573,6 +573,14 @@ namespace RealismTest
                 if (NativeFunction.Natives.DOES_WEAPON_TAKE_WEAPON_COMPONENT<bool>((uint)EquippedWeaponDescriptor.Hash, hash) && !NativeFunction.Natives.HAS_WEAPON_GOT_WEAPON_COMPONENT<bool>(EquippedWeapon, hash))
                 {
                     string componentName = WeaponComponentNames.FirstOrDefault((string n) => Game.GetHashKey(n) == hash);
+                    if (NativeFunction.Natives.HAS_WEAPON_GOT_WEAPON_COMPONENT<bool>(EquippedWeapon, Game.GetHashKey("COMPONENT_AT_SCOPE_MAX")) &&  componentName == "COMPONENT_AT_SCOPE_LARGE"){
+                        continue;
+                    }
+                    if (NativeFunction.Natives.HAS_WEAPON_GOT_WEAPON_COMPONENT<bool>(EquippedWeapon, Game.GetHashKey("COMPONENT_AT_SCOPE_LARGE")) && componentName == "COMPONENT_AT_SCOPE_MAX")
+                    {
+                        continue;
+                    }
+
                     PlayerPed.Inventory.AddComponentToWeapon(EquippedWeaponDescriptor.Asset, componentName);
                 }
                 int num = 0;
