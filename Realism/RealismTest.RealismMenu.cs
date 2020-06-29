@@ -43,6 +43,10 @@ namespace RealismTest
 
         internal static UIMenuItem GetKeyCar;
 
+        internal static UIMenuItem GetKeyMenu;
+
+        internal static Keys GetMenuKey = Keys.F3;
+
         internal static Keys WeaponDropKey = Keys.D9;
 
         internal static Keys GetCarKey = Keys.NumPad0;
@@ -95,6 +99,11 @@ namespace RealismTest
                     {
                         MenuKeyBeingChanged.Text = OldKeyString.Replace(GetCarKey.ToString(), keys.ToString());
                         GetCarKey = keys;
+                    }
+                    if (MenuKeyBeingChanged == GetKeyMenu)
+                    {
+                        MenuKeyBeingChanged.Text = OldKeyString.Replace(GetMenuKey.ToString(), keys.ToString());
+                        GetMenuKey = keys;
                     }
                     RealismMenuKeyBinds.RefreshIndex();
                     RealismMenuKeyBinds.Visible = true;
@@ -248,7 +257,7 @@ namespace RealismTest
         internal static void MenuInit()
         {
             //Menus
-            RealismMenuMain = new UIMenu("Realism Menu", "Script Version 1.02.16");
+            RealismMenuMain = new UIMenu("Realism Menu", "Script Version 1.02.17");
             RealismMenuMechanic = new UIMenu("Mechanic Menu", "Realism");
             RealismMenuKeyBinds = new UIMenu("Keybinds", "Realism");
             RealismMenuToggle = new UIMenu("Feature Toggle", "Realism");
@@ -261,6 +270,7 @@ namespace RealismTest
             //Keybind
             DropKeyWeapon = new UIMenuItem("Weapon Drop: " + WeaponDropKey.ToString());
             GetKeyCar = new UIMenuItem("Quick Call Mechanic: " + GetCarKey.ToString());
+            GetKeyMenu = new UIMenuItem("Open Menu: " + GetMenuKey.ToString());
 
             //Toggles
             ToggleHandDamage = new UIMenuCheckboxItem("Hand Damage", isHandDamageOn, "Allows the dropping of weapons by anyone when hit in the hands.");
@@ -294,6 +304,7 @@ namespace RealismTest
 
             DropKeyWeapon.Activated += ChangeKey;
             GetKeyCar.Activated += ChangeKey;
+            GetKeyMenu.Activated += ChangeKey;
 
             BuyGarage.Activated += BuyGarageEvent;
 
@@ -309,6 +320,7 @@ namespace RealismTest
 
             RealismMenuKeyBinds.AddItem(DropKeyWeapon);
             RealismMenuKeyBinds.AddItem(GetKeyCar);
+            RealismMenuKeyBinds.AddItem(GetKeyMenu);
             RealismMenuKeyBinds.RefreshIndex();
 
             RealismMenuToggle.AddItem(ToggleBleeds);

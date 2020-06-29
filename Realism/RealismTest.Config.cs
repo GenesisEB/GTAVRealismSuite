@@ -5,6 +5,8 @@ using RealismTest;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows.Forms;
+
 namespace RealismTest
 {
     [JsonObject]
@@ -34,6 +36,15 @@ namespace RealismTest
 
         [JsonProperty]
         internal bool isDogsOn = true;
+
+        [JsonProperty]
+        internal Keys MenuKey = Keys.F3;
+
+        [JsonProperty]
+        internal Keys CarKey = Keys.NumPad0;
+
+        [JsonProperty]
+        internal Keys DropKey = Keys.D9;
 
         [JsonProperty]
         internal int TrunkBandages = 0;
@@ -115,6 +126,9 @@ namespace RealismTest
             TrunkLoadout.NumArmor = CurrentConfig.TrunkArmor;
             TrunkLoadout.NumBandages = CurrentConfig.TrunkBandages;
             TrunkLoadout.NumHealthPacks = CurrentConfig.TrunkHealth;
+            RealismMenu.GetCarKey = CurrentConfig.CarKey;
+            RealismMenu.GetMenuKey = CurrentConfig.MenuKey;
+            RealismMenu.WeaponDropKey = CurrentConfig.DropKey;
             if (CurrentConfig.StoredGunAssetNames != null)
                 TrunkLoadout.StoredGunAssetNames = CurrentConfig.StoredGunAssetNames;
             if (CurrentConfig.OwnedHashes != null)
