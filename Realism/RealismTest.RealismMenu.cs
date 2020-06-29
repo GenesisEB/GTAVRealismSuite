@@ -257,7 +257,7 @@ namespace RealismTest
         internal static void MenuInit()
         {
             //Menus
-            RealismMenuMain = new UIMenu("Realism Menu", "Script Version 1.02.17");
+            RealismMenuMain = new UIMenu("Realism Menu", "Script Version 1.02.19");
             RealismMenuMechanic = new UIMenu("Mechanic Menu", "Realism");
             RealismMenuKeyBinds = new UIMenu("Keybinds", "Realism");
             RealismMenuToggle = new UIMenu("Feature Toggle", "Realism");

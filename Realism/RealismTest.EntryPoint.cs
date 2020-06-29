@@ -158,7 +158,7 @@ namespace RealismTest
             if (Game.IsKeyDown(RealismMenu.GetCarKey) && RealismMenu.isMechanicOn)
                 TaskSystem.GetCar(TaskSystem.SavedVehicle);
             Game.IsKeyDown(Keys.L);
-            if (Game.IsKeyDown(Keys.F3))
+            if (Game.IsKeyDown(RealismMenu.GetMenuKey))
             {
                 RealismMenu.RealismMenuMain.Visible = !RealismMenu.RealismMenuMain.Visible;
                 RealismMenu.RealismMenuKeyBinds.Visible = false;

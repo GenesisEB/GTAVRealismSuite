@@ -67,7 +67,7 @@ namespace RealismTest
                 RealismMenu.RealismMenuMechanic.RefreshIndex();
                 Garage First;
                 PersonalVehicle pv;
-                if ((First = Garages.FirstOrDefault()) != null && (pv = First.GarageInventory[0]) != null && pv.ModelHash != 0)
+                if ((First = Garages.FirstOrDefault()) != null && First.GarageInventory.Length != 0 && (pv = First.GarageInventory[0]) != null && pv.ModelHash != 0)
                 {
                     TaskSystem.SavedVehicle = pv;
                 }
