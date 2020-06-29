@@ -109,6 +109,7 @@ namespace RealismTest
                     RealismMenuKeyBinds.Visible = true;
                     EntryPoint.ChangingKey = false;
                     MenuKeyBeingChanged = null;
+                    Config.CurrentConfig.SaveConfig();
                 }
             }
             else if (MenuKeyBeingChanged == null && selectedItem != null)
@@ -257,7 +258,7 @@ namespace RealismTest
         internal static void MenuInit()
         {
             //Menus
-            RealismMenuMain = new UIMenu("Realism Menu", "Script Version 1.02.19");
+            RealismMenuMain = new UIMenu("Realism Menu", "Script Version 1.02.20");
             RealismMenuMechanic = new UIMenu("Mechanic Menu", "Realism");
             RealismMenuKeyBinds = new UIMenu("Keybinds", "Realism");
             RealismMenuToggle = new UIMenu("Feature Toggle", "Realism");
