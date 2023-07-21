@@ -38,6 +38,15 @@ namespace RealismTest
         internal bool isDogsOn = true;
 
         [JsonProperty]
+        internal bool isPBlipsOn = true;
+
+        [JsonProperty]
+        internal bool isECOn = true;
+
+        [JsonProperty]
+        internal bool isKMOn = true;
+
+        [JsonProperty]
         internal Keys MenuKey = Keys.F3;
 
         [JsonProperty]
@@ -101,9 +110,11 @@ namespace RealismTest
                 if(!Excepted)
                     CurrentConfig = JsonConvert.DeserializeObject<Config>(currentLine);
                 streamReader.Close();
+                
             }
             if(CurrentConfig == null)
             {
+                Game.DisplayNotification("Config was out of date, corrupted, or missing. New config created!");
                 CurrentConfig = new Config();
                 CurrentConfig.SaveConfig();
             }
@@ -114,6 +125,9 @@ namespace RealismTest
             RealismMenu.isKnockoutsOn = CurrentConfig.isKnockoutsOn;
             RealismMenu.isMechanicOn = CurrentConfig.isMechanicOn;
             RealismMenu.isDogsOn = CurrentConfig.isDogsOn;
+            RealismMenu.isPBlipsOn = CurrentConfig.isPBlipsOn;
+            RealismMenu.isECOn = CurrentConfig.isECOn;
+            RealismMenu.isKMOn = CurrentConfig.isKMOn;
             RealismMenu.ToggleAttachment.Checked = CurrentConfig.isAttachmentOn;
             RealismMenu.ToggleBleeds.Checked = CurrentConfig.isBleedingOn;
             RealismMenu.ToggleConcussion.Checked = CurrentConfig.isConcussionOn;
@@ -121,6 +135,9 @@ namespace RealismTest
             RealismMenu.ToggleKnockOuts.Checked = CurrentConfig.isKnockoutsOn;
             RealismMenu.ToggleMechanic.Checked = CurrentConfig.isMechanicOn;
             RealismMenu.ToggleDogs.Checked = CurrentConfig.isDogsOn;
+            RealismMenu.TogglePoliceBlips.Checked = CurrentConfig.isPBlipsOn;
+            RealismMenu.ToggleEngineController.Checked = CurrentConfig.isECOn;
+            RealismMenu.ToggleKeyboardMode.Checked = CurrentConfig.isKMOn;
             RealismMenu.UpdateMenu(null, RealismMenu.isMechanicOn);
             RealismMenu.RealismMenuToggle.RefreshIndex();
             TrunkLoadout.NumArmor = CurrentConfig.TrunkArmor;

@@ -14,6 +14,7 @@ namespace RealismTest
         internal static Weapon LastWeapon;
 
         internal static WeaponDescriptor EquippedWeaponDescriptor;
+        internal static WeaponDescriptor LastWeaponDescriptor;
 
         internal static string[] WeaponComponentNames = new string[520]
         {
@@ -542,9 +543,11 @@ namespace RealismTest
         internal static HashSet<uint> OwnedHashes = new HashSet<uint>();
 
         internal static Dictionary<string, int> WeaponTints = new Dictionary<string, int>();
+       
 
         internal static void ProcessAttachments()
         {
+            
             if (!EquippedWeapon || !EquippedWeaponDescriptor.Asset.IsValid || !EquippedWeapon.Model.IsValid)
             {
                 return;

@@ -67,6 +67,12 @@ namespace RealismTest
 
         internal static UIMenuCheckboxItem ToggleDogs;
 
+        internal static UIMenuCheckboxItem TogglePoliceBlips;
+
+        internal static UIMenuCheckboxItem ToggleEngineController;
+
+        internal static UIMenuCheckboxItem ToggleKeyboardMode;
+
         internal static bool isHandDamageOn = true;
 
         internal static bool isKnockoutsOn = true;
@@ -80,6 +86,12 @@ namespace RealismTest
         internal static bool isBleedingOn = true;
 
         internal static bool isDogsOn = true;
+
+        internal static bool isPBlipsOn = true;
+
+        internal static bool isECOn = true;
+
+        internal static bool isKMOn = true;
 
         internal static void ChangeKey(UIMenu sender, UIMenuItem selectedItem)
         {
@@ -252,13 +264,40 @@ namespace RealismTest
                     Config.CurrentConfig.SaveConfig();
                 }
             }
+            if (sender == TogglePoliceBlips)
+            {
+                isPBlipsOn = Checked;
+                if (Config.CurrentConfig != null)
+                {
+                    Config.CurrentConfig.isPBlipsOn = Checked;
+                    Config.CurrentConfig.SaveConfig();
+                }
+            }
+            if (sender == ToggleEngineController)
+            {
+                isECOn = Checked;
+                if (Config.CurrentConfig != null)
+                {
+                    Config.CurrentConfig.isECOn = Checked;
+                    Config.CurrentConfig.SaveConfig();
+                }
+            }
+            if (sender == ToggleKeyboardMode)
+            {
+                isKMOn = Checked;
+                if (Config.CurrentConfig != null)
+                {
+                    Config.CurrentConfig.isKMOn = Checked;
+                    Config.CurrentConfig.SaveConfig();
+                }
+            }
             RealismMenuMain.RefreshIndex();
         }
 
         internal static void MenuInit()
         {
             //Menus
-            RealismMenuMain = new UIMenu("Realism Menu", "Script Version 1.02.20");
+            RealismMenuMain = new UIMenu("Realism Menu", "Script Version 1.03.04");
             RealismMenuMechanic = new UIMenu("Mechanic Menu", "Realism");
             RealismMenuKeyBinds = new UIMenu("Keybinds", "Realism");
             RealismMenuToggle = new UIMenu("Feature Toggle", "Realism");
@@ -281,6 +320,9 @@ namespace RealismTest
             ToggleMechanic = new UIMenuCheckboxItem("Mechanic", isMechanicOn, "Allows the Player to save a car, have the mechanic retrieve it, and gives the car a working trunk.");
             ToggleBleeds = new UIMenuCheckboxItem("Bleeding", isBleedingOn, "Gives the player a blood level and the ability to bleed.");
             ToggleDogs = new UIMenuCheckboxItem("Dogs", isDogsOn, "Allows the cops to bring dogs into the chase. Who let the dogs out?");
+            TogglePoliceBlips = new UIMenuCheckboxItem("Police Blips", isPBlipsOn, "Disables the police blips on the radar when enabled. Where did they come from? Where did they go?!");
+            ToggleEngineController = new UIMenuCheckboxItem("Engine Controller", isECOn, "An advanced engine controller that modifies the torque and power bands of the currently driven vehicle. Highly recommended with Realism Handling files.");
+            ToggleKeyboardMode = new UIMenuCheckboxItem("Keyboard Mode", isKMOn, "Modifies the early torque band to allow keyboard users to take off while still being able to control the vehicle. If you are using a controller with analogue triggers it is recommended to turn this off.");
 
             //Main 2
             TogglesMenuSwitch = new UIMenuItem("Toggle Scripts", "Allows you to change the running scripts");
@@ -302,6 +344,10 @@ namespace RealismTest
             ToggleAttachment.CheckboxEvent += UpdateToggle;
             ToggleBleeds.CheckboxEvent += UpdateToggle;
             ToggleDogs.CheckboxEvent += UpdateToggle;
+            TogglePoliceBlips.CheckboxEvent += UpdateToggle;
+            ToggleEngineController.CheckboxEvent += UpdateToggle;
+            ToggleKeyboardMode.CheckboxEvent += UpdateToggle;
+
 
             DropKeyWeapon.Activated += ChangeKey;
             GetKeyCar.Activated += ChangeKey;
@@ -331,6 +377,9 @@ namespace RealismTest
             RealismMenuToggle.AddItem(ToggleConcussion);
             RealismMenuToggle.AddItem(ToggleAttachment);
             RealismMenuToggle.AddItem(ToggleMechanic);
+            RealismMenuToggle.AddItem(TogglePoliceBlips);
+            RealismMenuToggle.AddItem(ToggleEngineController);
+            RealismMenuToggle.AddItem(ToggleKeyboardMode);
             RealismMenuToggle.RefreshIndex();
 
             RealismMenuMechanic.AddItem(BuyGarage);
